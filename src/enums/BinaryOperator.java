@@ -25,6 +25,11 @@ public enum BinaryOperator {
             return operand2 / operand1;
         }
     };
+
+    public static boolean isOperator(String token) {
+        return token.matches("[+\\-*/]");
+    }
+
     public static BinaryOperator getOperator(String operatorString) throws IllegalArgumentException {
         switch (operatorString) {
             case "+" -> {

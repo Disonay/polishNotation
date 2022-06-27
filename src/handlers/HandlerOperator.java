@@ -13,15 +13,15 @@ public class HandlerOperator extends AbstractHandler{
 
     @Override
     public void process(String token) throws WrongPolishNotation {
-        try {
+        if (BinaryOperator.isOperator(token)) {
             stack.add(BinaryOperator.getOperator(token).compute(stack.pop(), stack.pop()));
         }
-        catch (IllegalArgumentException e) {
+        else {
             if (!Objects.isNull(nextHandler)) {
                 nextHandler.process(token);
             }
             else {
-                throw new WrongPolishNotation("Wrong notation", e);
+                throw new WrongPolishNotation("Wrong notation");
             }
         }
     }

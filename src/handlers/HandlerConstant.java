@@ -13,15 +13,15 @@ public class HandlerConstant extends AbstractHandler {
 
     @Override
     public void process(String token) throws WrongPolishNotation {
-        try {
+        if (Constant.haveConstant(token)) {
             stack.add(Constant.valueOf(token).getDoubleValue());
         }
-        catch (IllegalArgumentException e) {
+        else  {
             if (!Objects.isNull(nextHandler)) {
                 nextHandler.process(token);
             }
             else {
-                throw new WrongPolishNotation("Wrong notation", e);
+                throw new WrongPolishNotation("Wrong notation");
             }
         }
     }

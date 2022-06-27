@@ -1,5 +1,9 @@
 package enums;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public enum Function {
     sin("sin") {
         @Override
@@ -23,6 +27,11 @@ public enum Function {
     private final String functionName;
     Function(String functionName) {
         this.functionName = functionName;
+    }
+
+    public static boolean haveFunction(String stringFunction) {
+        final List<String> FUNCTIONS = new ArrayList<>(Arrays.asList("sin", "cos", "||", "abs"));
+        return FUNCTIONS.contains(stringFunction);
     }
 
     public static Function getFunction(String stringFucntion) {

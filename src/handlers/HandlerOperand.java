@@ -2,6 +2,7 @@ package handlers;
 
 import exceptions.WrongPolishNotation;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Stack;
 
@@ -12,15 +13,13 @@ public class HandlerOperand extends AbstractHandler {
 
     @Override
     public void process(String token) throws WrongPolishNotation {
-        try {
+        if (token.matches("[0-9]{1,13}(\\.[0-9]*)?")) {
             stack.add(Double.parseDouble(token));
-        }
-        catch (NumberFormatException e) {
+        } else {
             if (!Objects.isNull(nextHandler)) {
                 nextHandler.process(token);
-            }
-            else {
-                throw new WrongPolishNotation("Wrong notation", e);
+            } else {
+                throw new WrongPolishNotation("Wrong notation");
             }
         }
     }
