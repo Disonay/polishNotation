@@ -9,16 +9,16 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class PolishNotationSolver {
-    private final Stack<Double> stack;
+    private final ArrayDeque<Double> stack;
     private final Handler handler;
 
     public PolishNotationSolver() {
-        stack = new Stack<>();
+        stack = new ArrayDeque<>();
 
         handler = new HandlerOperand(stack);
         Handler handler2 = new HandlerConstant(stack);
         Handler handler3 = new HandlerFunction(stack);
-        Handler handler4 = new HandlerOperator(stack);
+        Handler handler4 = new HandlerBinaryOperator(stack);
 
         handler3.setNext(handler4);
         handler2.setNext(handler3);

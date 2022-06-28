@@ -26,7 +26,7 @@ public enum BinaryOperator {
         }
     };
 
-    public static boolean isOperator(String token) {
+    public static boolean isBinaryOperator(String token) {
         return token.matches("[+\\-*/]");
     }
 

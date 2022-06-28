@@ -1,12 +1,13 @@
 package handlers;
 
+import java.util.ArrayDeque;
 import java.util.Stack;
 
 public abstract class AbstractHandler implements Handler {
-    Stack<Double> stack;
+    ArrayDeque<Double> stack;
     Handler nextHandler;
 
-    AbstractHandler(Stack<Double> stack) {
+    AbstractHandler(ArrayDeque<Double> stack) {
         this.stack = stack;
     }
 
