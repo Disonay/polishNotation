@@ -1,6 +1,6 @@
 package main;
 
-import exceptions.WrongPolishNotation;
+import utils.exceptions.WrongPolishNotation;
 
 import java.io.IOException;
 
@@ -13,6 +13,5 @@ public class Main {
         catch (IOException | WrongPolishNotation e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

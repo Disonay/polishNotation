@@ -1,27 +1,24 @@
-package handlers;
+package handlers.solver;
 
-import enums.Function;
-import exceptions.WrongPolishNotation;
+import utils.exceptions.WrongPolishNotation;
 
 import java.util.ArrayDeque;
 import java.util.Objects;
 
-public class HandlerFunction extends AbstractHandler {
-
-    public HandlerFunction(ArrayDeque<Double> stack) {
+public class SolverHandlerOperand extends AbstractSolverHandler {
+    public SolverHandlerOperand(ArrayDeque<Double> stack) {
         super(stack);
     }
 
     @Override
     public void process(String token) throws WrongPolishNotation {
-        if (Function.haveFunction(token)) {
-            stack.addFirst(Function.getFunction(token).compute(stack.pop()));
+        if (token.matches("[0-9]{1,13}(\\.[0-9]*)?")) {
+            stack.addFirst(Double.parseDouble(token));
         }
-        else  {
+        else {
             if (!Objects.isNull(nextHandler)) {
                 nextHandler.process(token);
-            }
-            else {
+            } else {
                 throw new WrongPolishNotation("Wrong notation");
             }
         }

@@ -1,7 +1,8 @@
 package main;
 
-import exceptions.WrongPolishNotation;
+import utils.exceptions.WrongPolishNotation;
 import handlers.*;
+import handlers.solver.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,10 +16,10 @@ public class PolishNotationSolver {
     public PolishNotationSolver() {
         stack = new ArrayDeque<>();
 
-        handler = new HandlerOperand(stack);
-        Handler handler2 = new HandlerConstant(stack);
-        Handler handler3 = new HandlerFunction(stack);
-        Handler handler4 = new HandlerBinaryOperator(stack);
+        handler = new SolverHandlerOperand(stack);
+        Handler handler2 = new SolverHandlerConstant(stack);
+        Handler handler3 = new SolverHandlerUnaryOperator(stack);
+        Handler handler4 = new SolverHandlerBinaryOperator(stack);
 
         handler3.setNext(handler4);
         handler2.setNext(handler3);

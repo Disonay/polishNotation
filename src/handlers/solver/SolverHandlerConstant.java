@@ -1,13 +1,13 @@
-package handlers;
+package handlers.solver;
 
-import enums.Constant;
-import exceptions.WrongPolishNotation;
+import utils.Constant;
+import utils.exceptions.WrongPolishNotation;
 
 import java.util.ArrayDeque;
 import java.util.Objects;
 
-public class HandlerConstant extends AbstractHandler {
-    public HandlerConstant(ArrayDeque<Double> stack) {
+public class SolverHandlerConstant extends AbstractSolverHandler {
+    public SolverHandlerConstant(ArrayDeque<Double> stack) {
         super(stack);
     }
 

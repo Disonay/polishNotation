@@ -4,11 +4,18 @@ import java.util.ArrayDeque;
 import java.util.Stack;
 
 public abstract class AbstractHandler implements Handler {
-    ArrayDeque<Double> stack;
-    Handler nextHandler;
+    protected ArrayDeque<Double> stack;
 
-    AbstractHandler(ArrayDeque<Double> stack) {
+    protected StringBuilder postfix;
+    public Handler nextHandler;
+
+    protected AbstractHandler(ArrayDeque<Double> stack) {
         this.stack = stack;
+    }
+
+    protected AbstractHandler() {
+        stack = new ArrayDeque<>();
+        postfix = new StringBuilder();
     }
 
     @Override
