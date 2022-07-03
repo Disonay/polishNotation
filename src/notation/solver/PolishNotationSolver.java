@@ -1,13 +1,15 @@
-package main;
+package notation.solver;
 
+import handlers.Handler;
+import handlers.solver.SolverHandlerBinaryOperator;
+import handlers.solver.SolverHandlerConstant;
+import handlers.solver.SolverHandlerOperand;
+import handlers.solver.SolverHandlerUnaryOperator;
 import utils.exceptions.WrongPolishNotation;
-import handlers.*;
-import handlers.solver.*;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Scanner;
 
 public class PolishNotationSolver {
     private final ArrayDeque<Double> stack;
@@ -26,8 +28,8 @@ public class PolishNotationSolver {
         handler.setNext(handler2);
     }
 
-    public Double compute(String filePath) throws IOException, WrongPolishNotation {
-        Scanner scanner = new Scanner(Files.readString(Path.of(filePath)));
+    public Double compute(String polishNotation) throws IOException, WrongPolishNotation {
+        Scanner scanner = new Scanner(polishNotation);
         while (scanner.hasNext()) {
             handler.process(scanner.next());
         }
